@@ -33,14 +33,14 @@ class App extends React.Component{
    //and returns the new information entered
    
    updateContact = (id,updatedContactInfo) =>{
-      let newContact= this.state.contactslist.map((contact) => {
+      let newContacts= this.state.contactslist.map((contact) => {
        if(contact.id === id){
          return updatedContactInfo;
        }
        return contact;
      })
      this.setState({
-       contactslist: newContact
+       contactslist: newContacts
      })
    }
 

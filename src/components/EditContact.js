@@ -20,7 +20,7 @@ class EditContact extends React.Component{
 
     handleSubmit = () => {
         let contact = {...this.state, id: this.props.contact.id}
-        this.props.updateUser(this.props.contact.id, contact);
+        this.props.updateContact(this.props.contact.id, contact);
         this.props.closeModal();
     }
 
