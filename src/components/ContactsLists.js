@@ -16,7 +16,7 @@ class ContactsLists extends React.Component{
             </div>
         )
     }
-    //we 
+    
 }
 
 export default ContactsLists;
