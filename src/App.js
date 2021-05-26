@@ -13,13 +13,13 @@ class App extends React.Component{
 
   }
 
-  addContact = (contact) => {
-    contact.id = 100 * Math.random() * 100000;
-    this.setState({
-      contactslist :[...this.state.contactslist, contact] 
-    })
+  // addContact = (contact) => {
+  //   contact.id = 100 * Math.random() * 100000;
+  //   this.setState({
+  //     contactslist :[...this.state.contactslist, contact] 
+  //   })
    
-  }
+  // }
 
   deleteContact = (id) =>{
     this.setState({

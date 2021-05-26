@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react'
+import { connect } from 'react-redux';
+import { addContact } from './actions/contactActions';
 
 class AddContact extends Component {
     constructor(props){
@@ -18,7 +20,7 @@ class AddContact extends Component {
     }
 
     handleSubmit = () => {
-        this.props.addContact(this.state);
+        this.props.addNewContact(this.state);
         //this clears whatever was typed initially into the form;basically resetting the form
         this.setState({
             contactname : "",
@@ -55,4 +57,8 @@ class AddContact extends Component {
     }
 }
 
-export default AddContact;
+const mapDispatchToProps = {
+    addNewContact : addContact
+}
+
+export default connect(null, mapDispatchToProps ) (AddContact);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ContactItem from './ContactItem';
 
 class ContactsLists extends React.Component{
@@ -6,7 +7,7 @@ class ContactsLists extends React.Component{
         return (
             <div>
                 <h3 className = "contacts">Contacts</h3>
-                {this.props.contactslist.map((contact) => {
+                {this.props.contactsData.map((contact) => {
                     return <ContactItem  
                     contact = {contact} key={contact.id} 
                     deleteContact = {this.props.deleteContact}
@@ -18,5 +19,9 @@ class ContactsLists extends React.Component{
     }
     
 }
-
-export default ContactsLists;
+const mapStateToProps = (state) =>{
+    return{
+    contactsData : state.contacts
+}
+}
+export default connect(mapStateToProps)(ContactsLists);

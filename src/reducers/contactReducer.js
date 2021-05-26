@@ -1,16 +1,13 @@
 var initialState = {
-    contacts : [{
-        Name: "Mawushie", 
-        Location: "Tse Addo",
-        Number: "0240000000"
-    }
-]
+    contacts : []
 }
 
 const contactReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "add_Contact":
-            
+        case "ADD_CONTACT":
+           return{
+               ...state , contacts : [...state.contacts , action.payload]
+           }
             break;
     
         default: 
