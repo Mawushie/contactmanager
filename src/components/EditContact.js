@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { editContactAction } from './actions/contactActions';
 
 class EditContact extends React.Component{
     constructor(props){
@@ -17,10 +19,10 @@ class EditContact extends React.Component{
            { [event.target.name] : event.target.value} //gets the value for whatever was typed and puts it in the respective inputs
         )
     }
-
+ 
     handleSubmit = () => {
         let contact = {...this.state, id: this.props.contact.id}
-        this.props.updateContact(this.props.contact.id, contact);
+        this.props.editContact(this.props.contact.id, contact);
         this.props.closeModal();
     }
 
@@ -49,4 +51,8 @@ class EditContact extends React.Component{
 
 }
 
-export default EditContact;
+const mapDispatchToProps = {
+    editContact : editContactAction
+}
+
+export default connect(null, mapDispatchToProps)(EditContact);

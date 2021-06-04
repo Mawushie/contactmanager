@@ -1,9 +1,10 @@
 import React from "react";
 import {Modal} from 'react-bootstrap';
+import { connect } from "react-redux";
+import { deleteContactAction } from "./actions/contactActions";
 import EditContact from "./EditContact";
 
-
-class UserItem extends React.Component{
+class ContactItem extends React.Component{
     constructor(props){  
         super(props)
         this.state = {
@@ -68,4 +69,8 @@ class UserItem extends React.Component{
     }
 }
 
-export default UserItem;
+const mapDispatchToProps = {
+    deleteContact : deleteContactAction
+}
+
+export default connect(null, mapDispatchToProps)(ContactItem);

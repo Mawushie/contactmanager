@@ -20,7 +20,9 @@ class AddContact extends Component {
     }
 
     handleSubmit = () => {
-        this.props.addNewContact(this.state);
+        let contactId = 10000 + Math.random() * 10000000;
+        let contact = { ...this.state, id: contactId };
+        this.props.addNewContact(contact);
         //this clears whatever was typed initially into the form;basically resetting the form
         this.setState({
             contactname : "",
@@ -61,4 +63,4 @@ const mapDispatchToProps = {
     addNewContact : addContact
 }
 
-export default connect(null, mapDispatchToProps ) (AddContact);
+export default connect(null, mapDispatchToProps)(AddContact);
