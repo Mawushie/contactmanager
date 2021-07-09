@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
 import { getAllContactsAction } from '../actions/contactActions';
-=======
-import { getAllContactsAction } from './actions/contactActions';
->>>>>>> 8b4b59f897035402b4c01fd4d9698ebbbf1d824c
 import ContactItem from './ContactItem';
 
 class ContactsLists extends React.Component{
