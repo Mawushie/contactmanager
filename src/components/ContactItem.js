@@ -1,7 +1,7 @@
 import React from "react";
 import {Modal} from 'react-bootstrap';
 import { connect } from "react-redux";
-import { deleteContactAction } from "./actions/contactActions";
+import { deleteContactAction } from "../actions/contactActions";
 import EditContact from "./EditContact";
 
 class ContactItem extends React.Component{

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editContactAction } from './actions/contactActions';
+import { editContactAction } from '../actions/contactActions';
+
 
 class EditContact extends React.Component{
     constructor(props){
