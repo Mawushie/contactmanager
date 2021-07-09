@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react'
 import { connect } from 'react-redux';
-import { addContact } from './actions/contactActions';
+import { addContactAction } from './actions/contactActions';
+
 
 class AddContact extends Component {
     constructor(props){
@@ -60,7 +61,7 @@ class AddContact extends Component {
 }
 
 const mapDispatchToProps = {
-    addNewContact : addContact
+    addNewContact : addContactAction
 }
 
 export default connect(null, mapDispatchToProps)(AddContact);

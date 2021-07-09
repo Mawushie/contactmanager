@@ -1,8 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getAllContactsAction } from './actions/contactActions';
 import ContactItem from './ContactItem';
 
 class ContactsLists extends React.Component{
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount(){//display all contacts when the component mounts
+        this.props.getAllContactsAction()
+    }
+
     render(){
         return (
             <div>
@@ -22,6 +31,11 @@ class ContactsLists extends React.Component{
 const mapStateToProps = (state) =>{
     return{
     contactsData : state.contacts
+    }
 }
+
+const mapDispatchToProps = {
+    getAllContactsAction
 }
-export default connect(mapStateToProps)(ContactsLists);
+
+export default connect(mapStateToProps , mapDispatchToProps)(ContactsLists);
