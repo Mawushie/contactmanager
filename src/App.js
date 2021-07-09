@@ -1,28 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-import AddContact from './components/AddContact';
-import ContactsLists from './components/ContactsLists';
 import React from 'react';
+import { BrowserRouter  , Switch , Route} from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import HomePage from './pages/HomePage';
+import LogIn from './pages/LogIn';
+import SignUp from './pages/SignUp';
 
 class App extends React.Component{
  
   render(){
     return (
       <div>
-        <div className="row title">
-          <h4>Contact Manager</h4>
-        </div>
-          
-        <div className = "row">
-          <div className = "col-md-5 userinput">
-            <AddContact/>
-          </div>
-          
-          <div className = "col-md-7 userlist">
-            <ContactsLists/>  
-          </div>
-          
-        </div>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path = '/' component = {HomePage}/>
+            <Route exact path = '/signup' component = {SignUp}/>
+            <Route exact path = '/login' component = {LogIn}/>
+            <Route exact path = '/dashboard' component = {Dashboard}/>
+          </Switch>
+        </BrowserRouter>
       </div>
     );
 
