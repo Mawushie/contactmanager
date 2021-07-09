@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addContactAction } from '../actions/contactActions';
 
 
+
 class AddContact extends Component {
     constructor(props){
         super(props)
