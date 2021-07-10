@@ -30,7 +30,7 @@ class ContactsLists extends React.Component{
 }
 const mapStateToProps = (state) =>{
     return{
-    contactsData : state.contacts
+    contactsData : state.contactsState.contacts
     }
 }
 
