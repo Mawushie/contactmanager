@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter  , Switch , Route} from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import HomePage from './pages/HomePage';
 import LogIn from './pages/LogIn';
@@ -15,7 +16,7 @@ class App extends React.Component{
             <Route exact path = '/' component = {HomePage}/>
             <Route exact path = '/signup' component = {SignUp}/>
             <Route exact path = '/login' component = {LogIn}/>
-            <Route exact path = '/dashboard' component = {Dashboard}/>
+            <ProtectedRoute exact path = '/dashboard' component = {Dashboard} />
           </Switch>
         </BrowserRouter>
       </div>
