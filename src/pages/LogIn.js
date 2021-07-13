@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { logInAction } from '../actions/authActions'
 
 class LogIn extends Component {
@@ -27,24 +28,40 @@ class LogIn extends Component {
         })
     }
     render() {
-        return (
-            <div className = 'container'>
-                <div className = 'row'>
-                    <form>
-                        <h4>Log In</h4>
+         //take signed in users to the dashboard when they are logged in
+            //firebase has auth properties on a signed in user  
+            if(this.props.auth.isLoaded === false){
+                return <h2>Loading...</h2>
+            }
+            
+            if(this.props.auth.isEmpty === false){
+                return <Redirect to = '/dashboard' />
+            }
 
-                        <label>Email</label><br></br>
-                        <input type = 'text' name = 'email' value = {this.state.email} onChange = {this.handleOnChange} /><br></br>
+            return (
+                <div className = 'container'>
+                    <div className = 'row'>
+                        <form>
+                            <h4>Log In</h4>
 
-                        <label>Password</label><br></br>
-                        <input type = 'password' name = 'password' value = {this.state.password} onChange = {this.handleOnChange} /><br></br><br></br>
+                            <label>Email</label><br></br>
+                            <input type = 'text' name = 'email' value = {this.state.email} onChange = {this.handleOnChange} /><br></br>
 
-                        <button type = 'button' onClick = {this.handleOnSubmit}>Log In</button>
-                    </form>
+                            <label>Password</label><br></br>
+                            <input type = 'password' name = 'password' value = {this.state.password} onChange = {this.handleOnChange} /><br></br><br></br>
+
+                            <button type = 'button' onClick = {this.handleOnSubmit}>Log In</button>
+                        </form>
+                    </div>
+                    
                 </div>
-                
-            </div>
-        )
+            )
+        }
+    }
+
+const mapStateToProps = (state) =>{
+    return {
+    auth : state.firebaseState.auth
     }
 }
 
@@ -52,4 +69,4 @@ const mapDispatchToProps = {
     logInAction
 }
 
-export default connect(null, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

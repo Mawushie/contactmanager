@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { signUpAction } from '../actions/authActions'
 
 class SignUp extends Component {
@@ -27,6 +28,16 @@ class SignUp extends Component {
         })
     }
     render() {
+         //take signed in users to the dashboard when they are logged in
+        //firebase has auth properties on a signed in user  
+        if(this.props.auth.isLoaded === false){
+            return <h2>Loading...</h2>
+        }
+        
+        if(this.props.auth.isEmpty === false){
+            return <Redirect to = '/dashboard' />
+        }
+
         return (
             <div className = 'container'>
                 <div className = 'row'>
@@ -50,8 +61,14 @@ class SignUp extends Component {
     }
 }
 
+const mapStateToProps = (state) =>{
+    return {
+    auth : state.firebaseState.auth
+    }
+}
+
 const mapDispatchToProps = {
     signUpAction
 }
 
-export default connect(null, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
